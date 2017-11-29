@@ -19,7 +19,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>Online Shopping - ${title}</title>
+    
+    <script>
+    	window.menu = '${title}';
+    </script>
 
     <!-- Bootstrap core CSS -->
     <link href="${css}/bootstrap.min.css" rel="stylesheet">
@@ -43,20 +47,34 @@
      
      <!-- Page Content -->
      <!-- Loading the home content -->
-	 <%@include file="home.jsp" %>    
- 
-
+     <c:if test="${userClickHome == true }">
+	 	<%@include file="home.jsp" %>
+ 	 </c:if>
+ 	     
+     <!-- Load only when user clicks about -->
+     <c:if test="${userClickAbout == true }">
+     	<%@include file="about.jsp" %>
+     </c:if>
+     
+     <!-- Load only when user clicks contact -->
+     <c:if test="${userClickContact == true }">
+     	<%@include file="contact.jsp" %>
+     </c:if>
+     
+ 	
 	<!-- Footer comes here -->
 	<%@include file="./shared/footer.jsp" %>
 
 
-     <!-- /.container -->
  
      <!-- jQuery -->
      <script src="${js}/jquery.js"></script>
  
      <!-- Bootstrap Core JavaScript -->
      <script src="${js}/bootstrap.min.js"></script>
+ 
+ 	<!-- Self code JavaScript -->
+ 	<script src="${js}/myapp.js"></script>
  
   </body>
  

@@ -9,7 +9,7 @@
 		</div>
 
 		<!-- to display actual products -->
-		<div class"col-md-9>
+		<div class="col-md-9">
 
 			<!-- Add breadcrumb component -->
 			<div class="row">

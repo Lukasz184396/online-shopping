@@ -19,7 +19,7 @@ public class Category {
 	
 	private String name;
 	
-	private String descirption;
+	private String descripton;
 	
 	@Column(name = "image_url")
 	private String imageURL;
@@ -29,7 +29,7 @@ public class Category {
 	
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", descirption=" + descirption + ", imageURL=" + imageURL
+		return "Category [id=" + id + ", name=" + name + ", descirption=" + descripton + ", imageURL=" + imageURL
 				+ ", active=" + active + "]";
 	}
 	public int getId() {
@@ -44,11 +44,11 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescirption() {
-		return descirption;
+	public String getDescripton() {
+		return descripton;
 	}
-	public void setDescirption(String descirption) {
-		this.descirption = descirption;
+	public void setDescripton(String descripton) {
+		this.descripton = descripton;
 	}
 	public String getImageURL() {
 		return imageURL;

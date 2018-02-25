@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,20 +15,22 @@ import net.kzn.shoppingbackend.dto.Category;
 @Repository("categoryDAO")
 @Transactional
 public class CategoryDAOImpl implements CategoryDAO {
-	
-	
+
 	@Autowired
-	private SessionFactory  sessionFactory;
+	private SessionFactory sessionFactory;
 
 	@Override
 	public List<Category> list() {
-		// TODO Auto-generated method stub
-		return null;
+		//hibernate query lanauague HQL								//parameter active
+		String selectActiveCategory = "FROM Category WHERE active = :active"; //FROM "ENTITY NAME"
+		Query query = sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
+		query.setParameter("active", true);
+		return query.getResultList();
 	}
 
 	@Override
 	public Category get(int id) {
-	
+
 		return sessionFactory.getCurrentSession().get(Category.class, Integer.valueOf(id));
 	}
 
@@ -35,14 +38,13 @@ public class CategoryDAOImpl implements CategoryDAO {
 	public boolean add(Category category) {
 		try {
 			sessionFactory.getCurrentSession().persist(category);
-			//add category to the database table
+			// add category to the database table
 			return true;
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
-		
+
 	}
 
 	@Override
@@ -50,8 +52,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		try {
 			sessionFactory.getCurrentSession().update(category);
 			return true;
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}
@@ -63,8 +64,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 		try {
 			sessionFactory.getCurrentSession().update(category);
 			return true;
-		}
-		catch(Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			return false;
 		}

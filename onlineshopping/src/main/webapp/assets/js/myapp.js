@@ -46,7 +46,15 @@ $(function() {
 			},
 			columns: [
 			          
-			          
+			          {
+			        	  data: 'code',
+			        	  bSortable: false,
+			        	  mRender: function(data, type, row) {
+			        	  		        		  
+			        	  return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" class="dataTableImg"/>';
+			        	  			        		  
+			        	  			        	  }
+			          },
 			          {
 			        	  data: 'name'
 			          },
@@ -54,12 +62,25 @@ $(function() {
 			        	  data: 'brand'
 			          },
 			          {
-			        	  data: 'unitPrice'
+			        	  data: 'unitPrice',
+			        	  mRender: function(data, tpye, row) {
+			        		  return '\u20AC ' + data
+			        	  }
 			          },
 			          {
 			        	  data: 'quantity'
+			          },
+			          {
+			        	  data: 'id',
+			        	  bSortable: false,
+			        	  mRender: function(data, tpye, row) {
+			        		  var str = '';
+			        		  str += '<a href="'+window.contextRoot+ '/show/'+data+'/product " class="btn btn-priamry"><span class="glyphicon glyphicon-eye-open"></span></a> &#160;';//&#160; is for addition space between icons
+			        		  str += '<a href="'+window.contextRoot+ '/cart/add/'+data+'/product " class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
+			        		  return str;
+			        	  }
 			          }
-			          
+			          	
 			          
 			          ]
 			

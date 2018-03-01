@@ -19,18 +19,8 @@ $(function() {
 	}
 	
 	//code for jquery dataTable	
-	//create a dataset
-	var products = [
-	                	['1', 'abc'],
-	                	['2', 'cyz'],
-	                	['3', 'afs'],
-	                	['4', 'asf'],
-	                	['5', 'aasfdbc'],
-	                	['6', 'fg'],
-	                	['7', 'sf'],
-	                	['8', 'sf']    	
-	          	                
-	                ];
+	
+
 	//get that table	
 	var $table = $('#productListTable');
 	
@@ -38,10 +28,42 @@ $(function() {
 	if($table.length) {
 		
 		//console.log('Inside the table!')
+		
+		var jsonUrl = '';
+		if(window.categoryId == '') {
+			jsonUrl = window.contextRoot + '/json/data/all/products';
+		}
+		else {
+			jsonUrl = window.contextRoot + '/json/data/category/'+ window.categoryId + '/products';
+		}
+		
 		$table.DataTable( {
 			lengthMenu: [ [3, 5, 10, -1], ['3 Records', '5 Records','10 Records','ALL Records'] ],
 			pageLength: 5,
-			data:products
+			ajax: {
+				url: jsonUrl,
+				dataSrc: ''
+			},
+			columns: [
+			          
+			          
+			          {
+			        	  data: 'name'
+			          },
+			          {
+			        	  data: 'brand'
+			          },
+			          {
+			        	  data: 'unitPrice'
+			          },
+			          {
+			        	  data: 'quantity'
+			          }
+			          
+			          
+			          ]
+			
+			
 		});
 		
 	}

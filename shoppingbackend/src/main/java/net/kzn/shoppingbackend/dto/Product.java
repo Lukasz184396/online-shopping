@@ -39,8 +39,26 @@ public class Product {
 	@Column(name = "supplier_id")
 	@JsonIgnore
 	private int supplierId;
+	private int purchases;
+	public int getPurchases() {
+		return purchases;
+	}
+
+	public void setPurchases(int purchases) {
+		this.purchases = purchases;
+	}
+
+	private int views;
 	
 	
+	public int getViews() {
+		return views;
+	}
+
+	public void setViews(int views) {
+		this.views = views;
+	}
+
 	public Product() {
 		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
 	}

@@ -9,13 +9,11 @@ public class ProductValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
 		return Product.class.equals(clazz);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		// TODO Auto-generated method stub
 		Product product = (Product) target;
 		if(product.getFile() == null 
 				|| product.getFile().getOriginalFilename().equals("") ) {
